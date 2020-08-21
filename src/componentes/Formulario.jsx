@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import Error from './Error';
 import PropTypes from 'prop-types';
 
-const Formulario = (props) => {
+const Formulario = ({ setBusqueda }) => {
 	const [termino, setTermino] = useState('');
 	const [error, setError] = useState(false);
 	const buscarImagenes = (e) => {
@@ -15,6 +15,7 @@ const Formulario = (props) => {
 		}
 		setError(false);
 		// enviar el término de búsqueda hacia el componente principal
+		setBusqueda(termino);
 	};
 	return (
 		<Fragment>
@@ -27,6 +28,11 @@ const Formulario = (props) => {
 							className="form-control bg-white"
 							placeholder="Busca una imagen"
 							onChange={(e) => setTermino(e.target.value)}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') {
+									setTermino(e.target.value);
+								}
+							}}
 						/>
 					</div>
 					<div className="form-group col-md-4">
@@ -38,6 +44,8 @@ const Formulario = (props) => {
 	);
 };
 
-Formulario.propTypes = {};
+Formulario.propTypes = {
+	setBusqueda: PropTypes.func.isRequired,
+};
 
 export default Formulario;
