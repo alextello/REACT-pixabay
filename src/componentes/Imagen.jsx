@@ -27,6 +27,8 @@ const Imagen = ({ imagen }) => {
 	);
 };
 
-Imagen.propTypes = {};
+Imagen.propTypes = {
+	imagen: PropTypes.object.isRequired,
+};
 
 export default Imagen;

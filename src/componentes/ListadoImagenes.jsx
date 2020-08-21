@@ -14,6 +14,8 @@ const ListadoImagenes = ({ imagenes }) => {
 	);
 };
 
-ListadoImagenes.propTypes = {};
+ListadoImagenes.propTypes = {
+	imagenes: PropTypes.array.isRequired,
+};
 
 export default ListadoImagenes;
